@@ -1,0 +1,44 @@
+import discord
+import asyncio
+import random
+import time
+import requests
+import sqlite3
+from urllib.parse import urlencode
+from discord.ext.commands import Bot
+
+client = discord.Client()
+
+client_id = 313212532426932226
+client_secret = "SYfz-CiXmZlmexzsUI3KOvzYhM8ce8hu"
+bot_token = "MzEzMjEyNTMyNDI2OTMyMjI2.C_pDHQ.k3irs1MD42Kp7Joczd2KsCouKzY"
+
+test_bot = Bot(command_prefix = "!")
+
+@test_bot.event
+async def on_read():
+    print("Client Logged in")
+
+@test_bot.command()
+async def hello(*args):
+    return await test_bot.say("Hello World!")
+
+@test_bot.command(aliases=['py_help','pyh'])
+async def python_help(*args):
+    print(args)
+    url = "https://docs.python.org/3/search.html?{}&check_keywords=yes&area=default"\
+          .format(urlencode({'q': ' '.join(args)}))
+    return await test_bot.say(url)
+
+@test_bot.command(aliases=['c_help', 'chelp'])
+async def cplusplus_help(*args):
+    print(args)
+    url = "http://www.cplusplus.com/search.do?{}"\
+          .format(urlencode({'q': ' '.join(args)}))
+    return await test_bot.say(url)
+
+@test_bot.command()
+async def source(*args):
+    return await test_bot.say('Hi {}! Here is my source code:
+
+test_bot.run(bot_token)
