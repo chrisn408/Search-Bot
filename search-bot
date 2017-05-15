@@ -39,6 +39,13 @@ async def cplusplus_help(*args):
 
 @test_bot.command()
 async def source(*args):
-    return await test_bot.say('Hi {}! Here is my source code:
+    return await test_bot.say('Hi! Here is my source code: '\
+                              "https://github.com/chrisn408/Search-Bot/blob/master/search-bot"\
+                             )
 
 test_bot.run(bot_token)
+
+
+
+
+
